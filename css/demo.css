@@ -1,0 +1,47 @@
+.one {
+    color: blue;
+    background-color: aqua;
+}
+
+.second {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+h1,
+h2 {
+    color: greenyellow;
+    text-decoration: overline;
+}
+
+
+/* Chapter styles with borders */
+
+.chapter1 {
+    text-transform: uppercase;
+    text-align: center;
+    border: 3px solid blue;
+    /* width + style + color */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.chapter2 {
+    text-transform: uppercase;
+    text-align: left;
+    border: 3px dashed green;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.chapter3 {
+    text-transform: uppercase;
+    text-align: right;
+    border: 3px dotted red;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.justify {
+    text-align: justify;
+}

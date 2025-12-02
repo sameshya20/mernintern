@@ -1,0 +1,41 @@
+h1 {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: justify;
+    text-decoration: underline;
+    text-transform: uppercase;
+    border: 3px solid black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div p {
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: justify;
+    text-transform: uppercase;
+    border-style: dashed;
+}
+
+p {
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: justify;
+    text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+footer p {
+    color: rgb(3, 3, 3);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}

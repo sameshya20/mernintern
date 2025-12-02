@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Border box for the div */
+        
+        div {
+            border: 10px solid red;
+            border-radius: 10px;
+            padding: 10px 15px 15px 10px;
+            margin-top: 10px;
+        }
+        /* Link styles */
+        
+        a {
+            color: blue;
+            text-decoration: none;
+            cursor: pointer;
+            /* pointer = hand cursor */
+        }
+        
+        a:hover {
+            color: red;
+        }
+        
+        a:visited {
+            color: purple;
+        }
+        
+        a:active {
+            color: green;
+        }
+        /* Text alignment boxes */
+        
+        .center {
+            text-align: center;
+            border: 2px solid purple;
+            padding: 10px;
+        }
+        
+        .left {
+            text-align: left;
+            border: 2px dashed brown;
+            padding: 10px;
+        }
+        
+        .right {
+            text-align: right;
+            border: 2px dotted orange;
+            padding: 10px;
+        }
+        
+        .justify {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p class="one">Hi this is para</p>
+    <p class="second">Hi this is para</p>
+
+    <h1>This is heading tag</h1>
+    <h2>This is heading tag 2</h2>
+
+    <div>
+
+        <!-- Chapter 1 -->
+        <h1 style="text-transform: uppercase; text-align:center; border:3px solid blue; padding:10px;">
+            chapter 1
+        </h1>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <mark>adipisicing elit</mark>.
+            <span style="color:brown">kaka</span> debitis nam aliquam hic saepe...
+            <br><br> 👉 <a href="https://google.com" target="_blank">Visit Google</a>
+        </p>
+
+        <!-- Chapter 2 -->
+        <h1 style="text-transform: uppercase; text-align:left; border:3px dashed green; padding:10px;">
+            chapter 2
+        </h1>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit...
+            <br><br> 👉 <a href="https://youtube.com" target="_blank">Visit YouTube</a>
+        </p>
+
+        <!-- Chapter 3 -->
+        <h1 style="text-transform: uppercase; text-align:right; border:3px dotted red; padding:10px;">
+            chapter 3
+        </h1>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit...
+            <br><br> 👉 <a href="https://facebook.com" target="_blank">Visit Facebook</a>
+        </p>
+
+        <p class="center">Center Text</p>
+        <p class="left">Left Text</p>
+        <p class="right">Right Text</p>
+
+        <p class="justify">This paragraph will be justified.</p>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyaas Academy - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Shyaas Academy</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="login-section">
+
+            <h1>Welcome Back!</h1>
+            <p>Click the button below to proceed with login.</p>
+
+            <button class="login-btn" onclick="showForm()">Login</button>
+
+            <form id="loginForm" class="hidden">
+                <h2>Enter Your Details</h2>
+
+                <label>Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+
+                <label>Password</label>
+                <input type="password" placeholder="Enter password" required>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Shyaas Academy • All Rights Reserved
+    </footer>
+
+    <script>
+        function showForm() {
+            document.getElementById("loginForm").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+
+</html>
