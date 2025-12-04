@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dessert World 🍰</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-pink-50">
+
+    <!-- ================= HOME PAGE ================= -->
+    <div id="homePage" class="page">
+
+        <!-- Header -->
+        <header class="bg-pink-500 text-white text-center py-6 shadow">
+            <h1 class="text-3xl font-bold">Welcome to Dessert World 🍰</h1>
+        </header>
+
+        <!-- Nav -->
+        <nav class="bg-pink-600 text-white text-center py-3 font-semibold">
+            Explore Our Sweetest Creations
+        </nav>
+
+        <!-- Main Section -->
+        <main class="p-6 text-center">
+
+            <h2 class="text-2xl font-bold mb-6">Our Popular Desserts</h2>
+
+            <!-- RESPONSIVE GRID -->
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                <!-- Dessert Card Template (Repeating) -->
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://www.melskitchencafe.com/wp-content/uploads/2023/01/updated-lava-cakes7-500x500.jpg" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">Chocolate Lava Cake</h3>
+                    <p class="text-gray-600">Warm, gooey molten chocolate.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://preppykitchen.com/wp-content/uploads/2022/07/Strawberry-Cupcakes-Feature.jpg" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">Strawberry Cupcake</h3>
+                    <p class="text-gray-600">Soft vanilla sponge with strawberry frosting.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://i.ytimg.com/vi/-3TFSG37IJc/maxresdefault.jpg" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">Rainbow Ice Cream</h3>
+                    <p class="text-gray-600">Colorful scoops of joy.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://www.kingarthurbaking.com/sites/default/files/2025-06/Easy-Cheesecake-6.jpg" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">Classic Cheesecake</h3>
+                    <p class="text-gray-600">Creamy & rich NY-style cheesecake.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://www.pauldmv.com/wp-content/uploads/2023/05/PAUL-Bakery-DMV_Macaron-Blog-2_816x545.png" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">French Macarons</h3>
+                    <p class="text-gray-600">Delicate, colorful almond cookies.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://thecaglediaries.com/wp-content/uploads/2023/03/Banana-Pudding-Cups-Featured-Image.jpg" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">Banana Pudding</h3>
+                    <p class="text-gray-600">Classic creamy pudding delight.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://celebratingsweets.com/wp-content/uploads/2021/03/Chocolate-Pudding-4.jpg" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">Chocolate Pudding</h3>
+                    <p class="text-gray-600">Silky smooth rich chocolate dessert.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-4 hover:scale-105 transition">
+                    <img src="https://images.aws.nestle.recipes/resized/5b069c3ed2feea79377014f6766fcd49_Original_NTH_Chocolate_Chip_Cookie_448_448.jpg" class="rounded-lg h-48 w-full object-cover">
+                    <h3 class="text-xl font-semibold mt-3">Choco Chip Cookies</h3>
+                    <p class="text-gray-600">Soft, chewy and loaded with chocolate chips.</p>
+                </div>
+
+            </div>
+
+            <!-- LOGIN BUTTON -->
+            <button onclick="showLogin()" class="mt-8 bg-pink-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-pink-700 transition font-semibold">
+            Click Here to Login
+        </button>
+
+        </main>
+
+        <footer class="bg-gray-900 text-white text-center py-4 mt-10">
+            © 2025 Dessert World | All Rights Reserved
+        </footer>
+
+    </div>
+
+    <!-- ================= LOGIN PAGE ================= -->
+    <div id="loginPage" class="page hidden">
+
+        <header class="bg-pink-500 text-white text-center py-6 shadow">
+            <h1 class="text-3xl font-bold">Login Page 🍨</h1>
+        </header>
+
+        <main class="flex justify-center p-6">
+
+            <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-lg">
+
+                <form class="space-y-3">
+                    <div>
+                        <label class="font-semibold">Name</label>
+                        <input type="text" required class="mt-1 w-full p-2 border rounded-lg" placeholder="Enter the name">
+                    </div>
+
+                    <div>
+                        <label class="font-semibold">Email</label>
+                        <input type="email" required class="mt-1 w-full p-2 border rounded-lg" placeholder="Enter the email">
+                    </div>
+
+                    <div>
+                        <label class="font-semibold">Password</label>
+                        <input type="password" required class="mt-1 w-full p-2 border rounded-lg" placeholder="Enter the password">
+                    </div>
+
+                    <div>
+                        <label class="font-semibold">Select Role</label>
+                        <select required class="mt-1 w-full p-2 border rounded-lg" placeholder="Enter the role">
+                        <option value="">Choose</option>
+                        <option>Customer</option>
+                        <option>Chef</option>
+                        <option>Admin</option>
+                    </select>
+                    </div>
+
+                    <button class="w-full bg-pink-600 text-white py-3 rounded-lg mt-4
+                               hover:bg-pink-700 transition font-semibold">
+                    Login
+                </button>
+
+                </form>
+
+            </div>
+
+        </main>
+
+        <footer class="bg-gray-900 text-white text-center py-4 mt-10">
+            © 2025 Dessert World | All Rights Reserved
+        </footer>
+    </div>
+
+    <!-- PAGE SWITCH SCRIPT -->
+    <script>
+        function showLogin() {
+            document.getElementById("homePage").classList.add("hidden");
+            document.getElementById("loginPage").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+
+</html>

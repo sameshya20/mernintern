@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+            background-color: red;
+            position: relative;
+            top: 100px;
+            left: 100px;
+            z-index: 0;
+        }
+        
+        .b {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            background: #000;
+            position: relative;
+            z-index: 6;
+        }
+        
+        .c {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a"></div><br>
+    <div class="b"></div><br>
+    <div class="c"></div>
+</body>
+
+</html>

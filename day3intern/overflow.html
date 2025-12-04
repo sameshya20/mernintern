@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overflow Demo</title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 2px solid black;
+            margin: 20px;
+            padding: 10px;
+            background: rgb(169, 234, 245);
+        }
+        
+        .visible {
+            overflow: visible;
+        }
+        
+        .hidden {
+            overflow: hidden;
+        }
+        
+        .scroll {
+            overflow: scroll;
+        }
+        
+        .auto {
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>overflow: visible</h2>
+    <div class="box visible">
+        This content is longer than the box, so it overflows outside the box and is VISIBLE. This line continues outside the border.
+    </div>
+
+    <h2></h2>
+</body>
+
+</html>

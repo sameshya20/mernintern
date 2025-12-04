@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard — Modern UI</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", Arial, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #f4f7ff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 25px 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        /* Header */
+        
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: #4f8cff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin-top: 25px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        
+        input,
+        select {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid #d1d9e6;
+            outline: none;
+            width: 220px;
+            font-size: 15px;
+        }
+        
+        input:focus,
+        select:focus {
+            border-color: #4f8cff;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #4f8cff;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        
+        .btn:hover {
+            opacity: 0.85;
+        }
+        
+        .btn.secondary {
+            background: #9eb6ff;
+        }
+        /* Table */
+        
+        table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e9edf5;
+            font-size: 15px;
+        }
+        
+        tr:hover {
+            background: #f5f8ff;
+        }
+        
+        th {
+            background: #f0f4ff;
+            font-weight: 600;
+        }
+        
+        .avatar {
+            width: 32px;
+            height: 32px;
+            background: #c7d8ff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .grade {
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 13px;
+        }
+        
+        .A {
+            background: #c8f7c5;
+            color: #1a7f1a;
+        }
+        
+        .B {
+            background: #dfe4ff;
+            color: #2746c3;
+        }
+        
+        .Aplus {
+            background: #ffe6b3;
+            color: #c47500;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-box {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">SD</div>
+            <div>
+                <h1>Student Dashboard</h1>
+                <span>Manage students — responsive, accessible & attractive UI</span>
+            </div>
+        </div>
+
+        <!-- Login -->
+        <h2 class="section-title">Login (demo)</h2>
+        <input type="text" id="loginUser" placeholder="Username">
+        <input type="password" id="loginPass" placeholder="Password">
+        <button class="btn" onclick="login()">Login</button>
+        <p id="loginMsg"></p>
+
+        <!-- Add Student -->
+        <h2 class="section-title">Add Student</h2>
+        <input type="text" id="name" placeholder="Name">
+        <input type="number" id="age" placeholder="Age">
+
+        <select id="grade">
+        <option>A</option>
+        <option>B</option>
+        <option>A+</option>
+    </select>
+
+        <button class="btn" onclick="addStudent()">Add</button>
+        <button class="btn secondary" onclick="clearForm()">Clear</button>
+
+        <!-- Search -->
+        <h2 class="section-title">Search by name</h2>
+        <input type="text" id="search" class="search-box" placeholder="Search (type & press enter)" onkeyup="if(event.key==='Enter') searchStudent()">
+        <button class="btn secondary" onclick="searchStudent()">Search</button>
+
+        <br><br>
+        <button class="btn" onclick="showGradeA()">Show Grade A</button>
+        <button class="btn secondary" onclick="uppercaseNames()">Uppercase Names</button>
+
+        <p id="searchResult"></p>
+
+        <!-- Student Table -->
+        <h2 class="section-title">Students</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Grade</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="studentsTable"></tbody>
+        </table>
+
+    </div>
+
+    <script>
+        let students = [{
+            id: 1,
+            name: "Asha",
+            age: 20,
+            grade: "A"
+        }, {
+            id: 2,
+            name: "Kiran",
+            age: 21,
+            grade: "B"
+        }, {
+            id: 3,
+            name: "Ravi",
+            age: 19,
+            grade: "A+"
+        }, {
+            id: 4,
+            name: "Meena",
+            age: 22,
+            grade: "A"
+        }];
+
+        function renderTable(list = students) {
+            const table = document.getElementById("studentsTable");
+            table.innerHTML = "";
+
+            list.forEach(s => {
+                table.innerHTML += `
+        <tr>
+            <td><div class="avatar">${s.name[0]}</div></td>
+            <td>${s.name}</td>
+            <td>${s.age}</td>
+            <td><span class="grade ${s.grade.replace('+','plus')}">${s.grade}</span></td>
+            <td>
+                <div class="actions">
+                    <button class="btn secondary" onclick="editStudent(${s.id})">Edit</button>
+                    <button class="btn" onclick="deleteStudent(${s.id})">Delete</button>
+                </div>
+            </td>
+        </tr>`;
+            });
+        }
+
+        renderTable();
+
+        /* Login */
+        function login() {
+            let user = document.getElementById("loginUser").value;
+            let pass = document.getElementById("loginPass").value;
+
+            document.getElementById("loginMsg").textContent =
+                user && pass ? `Logged in as ${user}` : "Enter valid login details";
+        }
+
+        /* Add */
+        function addStudent() {
+            let name = document.getElementById("name").value.trim();
+            let age = document.getElementById("age").value;
+            let grade = document.getElementById("grade").value;
+
+            if (!name || !age) {
+                alert("Enter student details!");
+                return;
+            }
+
+            students.push({
+                id: Date.now(),
+                name,
+                age,
+                grade
+            });
+
+            renderTable();
+            clearForm();
+        }
+
+        /* Clear form */
+        function clearForm() {
+            document.getElementById("name").value = "";
+            document.getElementById("age").value = "";
+        }
+
+        /* Search */
+        function searchStudent() {
+            let text = document.getElementById("search").value.trim().toLowerCase();
+            let found = students.filter(s => s.name.toLowerCase().includes(text));
+
+            document.getElementById("searchResult").textContent =
+                found.length ? "Search results:" : "No student found";
+
+            renderTable(found);
+        }
+
+        /* Show Grade A */
+        function showGradeA() {
+            let list = students.filter(s => s.grade === "A");
+            document.getElementById("searchResult").textContent =
+                list.length ? "Showing Grade A Students" : "No Grade A Students";
+
+            renderTable(list);
+        }
+
+        /* Uppercase */
+        function uppercaseNames() {
+            students = students.map(s => ({...s,
+                name: s.name.toUpperCase()
+            }));
+            renderTable();
+        }
+
+        /* Edit */
+        function editStudent(id) {
+            let s = students.find(x => x.id === id);
+            if (!s) return;
+
+            document.getElementById("name").value = s.name;
+            document.getElementById("age").value = s.age;
+            document.getElementById("grade").value = s.grade;
+
+            deleteStudent(id);
+        }
+
+        /* Delete */
+        function deleteStudent(id) {
+            students = students.filter(s => s.id !== id);
+            renderTable();
+        }
+    </script>
+
+</body>
+
+</html>

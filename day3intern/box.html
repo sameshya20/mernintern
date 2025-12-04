@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absolute Position Hello</title>
+    <style>
+        .student {
+            position: sticky;
+        }
+        
+        .box {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(139, 231, 226);
+            position: relative;
+            margin: 40px;
+        }
+        
+        .inner {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px 50px;
+            border-radius: 5px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .container {
+            width: 300px;
+            height: 200px;
+            background-color: rgb(225, 192, 241);
+            position: relative;
+            margin: 40px;
+        }
+        
+        .message {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px 30px;
+            font-size: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="inner">Hello</div>
+    </div>
+    <div class="container">
+        <div class="message">Hello</div>
+    </div>
+    <h1>Fixed Heading</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate sit libero laborum voluptas omnis ipsa deserunt a ut dolores. Laboriosam sed at et delectus fugit eos illum nobis repudiandae nihil</p>
+</body>
+
+</html>
