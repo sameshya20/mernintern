@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-500 to-purple-600 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white w-full max-w-xl p-6 rounded-2xl shadow-xl space-y-6 animate-fadeIn">
+
+        <h1 class="text-3xl font-extrabold text-center text-gray-800">📘 Simple Quiz</h1>
+
+        <!-- Quiz Container -->
+        <div id="quizBox" class="space-y-4">
+            <h2 id="question" class="text-xl font-semibold text-gray-900"></h2>
+
+            <div id="options" class="space-y-3"></div>
+
+            <button id="nextBtn" class="w-full bg-blue-600 text-white py-2 rounded-lg text-lg font-semibold hover:bg-blue-700 transition hidden">
+                Next
+            </button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="resultBox" class="hidden text-center space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">🎉 Quiz Completed!</h2>
+            <p id="score" class="text-xl font-semibold text-gray-700"></p>
+
+            <button onclick="location.reload()" class="w-full bg-green-600 text-white py-2 rounded-lg text-lg font-semibold hover:bg-green-700 transition">
+                Restart Quiz
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ------------------- QUIZ DATA -------------------
+        const quizData = [{
+            question: "1. HTML stands for?",
+            options: ["Hyper Text Markup Language", "High Transfer Mark Language", "Home Tool Markup Language", "Hyperlinks Text Marking Language"],
+            answer: 0
+        }, {
+            question: "2. Which language is used for styling webpages?",
+            options: ["Python", "CSS", "C++", "Java"],
+            answer: 1
+        }, {
+            question: "3. JavaScript is mainly used for?",
+            options: ["Styling", "Structure", "Functionality", "Database"],
+            answer: 2
+        }, {
+            question: "4. Tailwind CSS is?",
+            options: ["Framework", "Utility-first CSS framework", "Backend tool", "Database"],
+            answer: 1
+        }];
+
+        let current = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById("question");
+        const optionsEl = document.getElementById("options");
+        const nextBtn = document.getElementById("nextBtn");
+        const resultBox = document.getElementById("resultBox");
+        const quizBox = document.getElementById("quizBox");
+        const scoreEl = document.getElementById("score");
+
+        // Load Question
+        function loadQuestion() {
+            const q = quizData[current];
+            questionEl.textContent = q.question;
+
+            optionsEl.innerHTML = "";
+            nextBtn.classList.add("hidden");
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement("button");
+                btn.className = "w-full text-left p-3 border rounded-lg bg-gray-100 hover:bg-blue-100 transition font-medium";
+                btn.textContent = opt;
+
+                btn.onclick = () => selectOption(index, btn);
+                optionsEl.appendChild(btn);
+            });
+        }
+
+        // Option Selection
+        function selectOption(index, button) {
+            const correct = quizData[current].answer;
+
+            // Disable all buttons
+            const allBtns = optionsEl.querySelectorAll("button");
+            allBtns.forEach(btn => btn.disabled = true);
+
+            // Mark correct/wrong
+            if (index === correct) {
+                button.classList.add("bg-green-400", "text-white");
+                score++;
+            } else {
+                button.classList.add("bg-red-400", "text-white");
+                allBtns[correct].classList.add("bg-green-400", "text-white");
+            }
+
+            nextBtn.classList.remove("hidden");
+        }
+
+        // Next Question
+        nextBtn.addEventListener("click", () => {
+            current++;
+            if (current < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        // Show Score
+        function showResult() {
+            quizBox.classList.add("hidden");
+            resultBox.classList.remove("hidden");
+            scoreEl.textContent = `Your Score: ${score} / ${quizData.length}`;
+        }
+
+        // Initialize quiz
+        loadQuestion();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="bg">
+
+    <h2 id="text">Change My Style!</h2>
+
+    <button onclick="changeColor()">Change Background</button>
+    <button onclick="increaseFont()">Increase Font Size</button>
+    <button onclick="decreaseFont()">Decrease Font Size</button>
+    <p id="mypara">This is paragraph</p>
+    <h2 id="title">Hello User!</h2>
+    <button onclick="changeText()">Click Me</button>
+
+    <script>
+        const para = document.getElementById("mypara");
+        para.style.color = "blue";
+
+        function changeText() {
+            document.getElementById("title").innerHTML = "Welcome to DOM!";
+        }
+        let fontSize = 20;
+
+        function changeColor() {
+            const colors = ["lightblue", "lightgreen", "yellow", "orange", "pink", "lightgray"];
+            document.getElementById("bg").style.backgroundColor =
+                colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function increaseFont() {
+            fontSize += 2;
+            document.getElementById("text").style.fontSize = fontSize + "px";
+        }
+
+        function decreaseFont() {
+            fontSize -= 2;
+            document.getElementById("text").style.fontSize = fontSize + "px";
+
+
+        }
+    </script>
+</body>
+
+</html>

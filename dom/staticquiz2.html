@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-card {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-4">
+
+    <div class="backdrop-blur-xl bg-white/20 border border-white/30 shadow-2xl rounded-3xl p-8 max-w-xl w-full animate-card">
+
+        <h1 class="text-4xl font-extrabold text-center text-white mb-6 drop-shadow-lg">✨ Smart Quiz App ✨</h1>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-white/30 rounded-full h-3 mb-4">
+            <div id="progressBar" class="bg-green-400 h-3 rounded-full w-0"></div>
+        </div>
+
+        <!-- Quiz Box -->
+        <div id="quizBox" class="space-y-6 text-white">
+            <h2 id="question" class="text-2xl font-bold"></h2>
+            <div id="options" class="space-y-4"></div>
+
+            <button id="nextBtn" class="w-full bg-blue-600 text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all hidden">
+                Next Question →
+            </button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="resultBox" class="hidden text-center text-white space-y-6">
+            <h2 class="text-3xl font-extrabold drop-shadow-lg">🎉 Quiz Completed!</h2>
+            <p id="score" class="text-xl font-semibold"></p>
+            <p id="emoji" class="text-6xl"></p>
+
+            <button onclick="location.reload()" class="w-full bg-green-600 text-white py-3 rounded-xl text-lg font-semibold hover:bg-green-700 hover:scale-105 transition-all">
+                Restart 🔄
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ------------------- QUIZ DATA -------------------
+        const quizData = [{
+            question: "HTML is used to?",
+            options: ["Structure webpages", "Style webpages", "Add functionality", "Store data"],
+            answer: 0
+        }, {
+            question: "CSS stands for?",
+            options: ["Color Style Sheet", "Cascading Style Sheets", "Creative Style System", "Coding Styling Syntax"],
+            answer: 1
+        }, {
+            question: "Which language is used for dynamic actions?",
+            options: ["HTML", "CSS", "JavaScript", "PHP"],
+            answer: 2
+        }, {
+            question: "Tailwind CSS is a?",
+            options: ["Backend tool", "Utility-first CSS framework", "Database", "Programming language"],
+            answer: 1
+        }, {
+            question: "Which tag is used for headings in HTML?",
+            options: ["<p>", "<div>", "<h1> to <h6>", "<title>"],
+            answer: 2
+        }];
+
+        let current = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById("question");
+        const optionsEl = document.getElementById("options");
+        const nextBtn = document.getElementById("nextBtn");
+        const resultBox = document.getElementById("resultBox");
+        const quizBox = document.getElementById("quizBox");
+        const scoreEl = document.getElementById("score");
+        const emojiEl = document.getElementById("emoji");
+        const progressBar = document.getElementById("progressBar");
+
+        // Load Question
+        function loadQuestion() {
+            const q = quizData[current];
+            questionEl.textContent = q.question;
+
+            // Update Progress Bar
+            progressBar.style.width = ((current) / quizData.length) * 100 + "%";
+
+            optionsEl.innerHTML = "";
+            nextBtn.classList.add("hidden");
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement("button");
+                btn.className = "w-full p-3 bg-white/20 border border-white/40 rounded-xl hover:bg-white/30 transition font-medium backdrop-blur-lg";
+                btn.textContent = opt;
+
+                btn.onclick = () => selectOption(index, btn);
+                optionsEl.appendChild(btn);
+            });
+        }
+
+        // Option Selection
+        function selectOption(index, button) {
+            const correct = quizData[current].answer;
+
+            const allBtns = optionsEl.querySelectorAll("button");
+            allBtns.forEach(btn => btn.disabled = true);
+
+            if (index === correct) {
+                button.classList.add("bg-green-500", "text-white", "font-bold");
+                score++;
+            } else {
+                button.classList.add("bg-red-500", "text-white", "font-bold");
+                allBtns[correct].classList.add("bg-green-500", "text-white", "font-bold");
+            }
+
+            nextBtn.classList.remove("hidden");
+        }
+
+        // Next Question
+        nextBtn.addEventListener("click", () => {
+            current++;
+            if (current < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+
+        // Show Score & Emoji Reaction
+        function showResult() {
+            quizBox.classList.add("hidden");
+            resultBox.classList.remove("hidden");
+
+            progressBar.style.width = "100%";
+
+            scoreEl.textContent = `Your Score: ${score} / ${quizData.length}`;
+
+            if (score === quizData.length) emojiEl.textContent = "🏆🤩";
+            else if (score >= quizData.length / 2) emojiEl.textContent = "😄👍";
+            else emojiEl.textContent = "😢 Try Again!";
+        }
+
+        loadQuestion();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="Mypara">This is a paragraph</p>
+    <p id="demo">HELLO</p>
+    <p id="a">DONE</p>
+    <button onclick="changeText()">click</button>;
+    <script>
+        const para = document.getElementById("Mypara");
+        para.style.color = "red";
+        para.style.backgroundColor = "aqua";
+        para.style.fontSize = "30px";
+
+        let a = document.getElementById("demo").textContent;
+        console.log("innerText:", a);
+
+        function changeText() {
+            document.getElementById("a").innerHTML = "<b>Text changed using innerText</b>";
+        }
+    </script>
+
+
+</body>
+
+</html>

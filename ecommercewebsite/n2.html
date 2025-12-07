@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Ecommerce UI</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- ------------------------------------------------------ -->
+    <!-- TOP HEADER (language, currency, contact) -->
+    <!-- ------------------------------------------------------ -->
+    <div class="w-full bg-gray-100 text-gray-600 text-sm">
+        <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between">
+            <div class="flex space-x-4">
+                <span>English ▾</span>
+                <span>USD ▾</span>
+                <span>Call Us: 3965410</span>
+            </div>
+            <span>Free delivery on order over $200</span>
+        </div>
+    </div>
+
+    <!-- ------------------------------------------------------ -->
+    <!-- MAIN NAV MENU -->
+    <!-- ------------------------------------------------------ -->
+    <header class="w-full border-b bg-white">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Flone<span class="text-purple-600">.</span></h1>
+
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#" class="hover:text-purple-600">Home</a>
+                <a href="#" class="hover:text-purple-600">Shop</a>
+                <a href="#" class="hover:text-purple-600">Collection</a>
+                <a href="#" class="hover:text-purple-600">Pages</a>
+                <a href="#" class="hover:text-purple-600">Blog</a>
+                <a href="#" class="hover:text-purple-600">About</a>
+                <a href="#" class="hover:text-purple-600">Contact</a>
+            </nav>
+
+            <div class="flex space-x-6 text-xl">
+                <i class="far fa-heart"></i>
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ------------------------------------------------------ -->
+    <!-- HERO SECTION (like Flone) -->
+    <!-- ------------------------------------------------------ -->
+    <section class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+            <p class="text-gray-500 uppercase tracking-widest mb-3">Stylish</p>
+            <h2 class="text-5xl font-bold leading-snug mb-4">Male Clothes</h2>
+            <p class="text-gray-600 mb-6">30% off Summer Vacation</p>
+            <button class="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition">Shop Now</button>
+        </div>
+
+        <img src="https://images.pexels.com/photos/6311656/pexels-photo-6311656.jpeg" class="rounded-lg shadow-md" alt="Model" />
+    </section>
+
+    <!-- ------------------------------------------------------ -->
+    <!-- FEATURES ROW -->
+    <!-- ------------------------------------------------------ -->
+    <section class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+        <div>
+            <h3 class="font-semibold text-lg mb-3">Free Shipping</h3>
+            <p class="text-gray-500 text-sm">On all orders over $200</p>
+        </div>
+        <div>
+            <h3 class="font-semibold text-lg mb-3">Support 24/7</h3>
+            <p class="text-gray-500 text-sm">We are here anytime</p>
+        </div>
+        <div>
+            <h3 class="font-semibold text-lg mb-3">Money Return</h3>
+            <p class="text-gray-500 text-sm">30 days refund policy</p>
+        </div>
+    </section>
+
+    <!-- ------------------------------------------------------ -->
+    <!-- SIDEBAR + FEATURED PRODUCTS (Minago style) -->
+    <!-- ------------------------------------------------------ -->
+
+    <section class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <!-- SIDEBAR -->
+        <aside class="border rounded-lg p-6 h-max bg-gray-50">
+            <h2 class="text-lg font-bold mb-4">Categories</h2>
+
+            <ul class="space-y-3 text-gray-700">
+                <li class="hover:text-purple-600 cursor-pointer">Electronics</li>
+                <li class="hover:text-purple-600 cursor-pointer">Fashion</li>
+                <li class="hover:text-purple-600 cursor-pointer">Men’s Clothes</li>
+                <li class="hover:text-purple-600 cursor-pointer">Women’s Clothes</li>
+                <li class="hover:text-purple-600 cursor-pointer">Gadgets</li>
+                <li class="hover:text-purple-600 cursor-pointer">Bags</li>
+                <li class="hover:text-purple-600 cursor-pointer">Shoes</li>
+            </ul>
+        </aside>
+
+        <!-- FEATURED PRODUCTS -->
+        <div class="md:col-span-3">
+            <h2 class="text-2xl font-bold mb-5">New Arrival</h2>
+
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+                <!-- PRODUCT CARD -->
+                <div class="border rounded-lg p-4 hover:shadow-xl transition">
+                    <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg" class="rounded mb-3" alt="">
+                    <h3 class="font-semibold text-lg">T-Shirt & Jeans</h3>
+                    <p class="text-gray-500 text-sm">$900.00</p>
+                </div>
+
+                <div class="border rounded-lg p-4 hover:shadow-xl transition">
+                    <img src="https://images.pexels.com/photos/1439886/pexels-photo-1439886.jpeg" class="rounded mb-3" alt="">
+                    <h3 class="font-semibold text-lg">Stylish Backpack</h3>
+                    <p class="text-gray-500 text-sm">$700.00</p>
+                </div>
+
+                <div class="border rounded-lg p-4 hover:shadow-xl transition">
+                    <img src="https://images.pexels.com/photos/1986996/pexels-photo-1986996.jpeg" class="rounded mb-3" alt="">
+                    <h3 class="font-semibold text-lg">Men's Hat</h3>
+                    <p class="text-gray-500 text-sm">$300.00</p>
+                </div>
+
+                <div class="border rounded-lg p-4 hover:shadow-xl transition">
+                    <img src="https://images.pexels.com/photos/19090/pexels-photo.jpg" class="rounded mb-3" alt="">
+                    <h3 class="font-semibold text-lg">Leather Watch</h3>
+                    <p class="text-gray-500 text-sm">$350.00</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ------------------------------------------------------ -->
+    <!-- BLOG SECTION -->
+    <!-- ------------------------------------------------------ -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <h2 class="text-2xl font-bold text-center mb-10">Our Blog</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="rounded-lg overflow-hidden shadow hover:shadow-xl transition cursor-pointer">
+                <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg" />
+                <div class="p-5">
+                    <p class="text-purple-600 text-sm mb-2">Lifestyle</p>
+                    <h3 class="text-lg font-semibold">How to style your clothes</h3>
+                </div>
+            </div>
+
+            <div class="rounded-lg overflow-hidden shadow hover:shadow-xl transition cursor-pointer">
+                <img src="https://images.pexels.com/photos/4065896/pexels-photo-4065896.jpeg" />
+                <div class="p-5">
+                    <p class="text-purple-600 text-sm mb-2">Lifestyle</p>
+                    <h3 class="text-lg font-semibold">Make your home aesthetic</h3>
+                </div>
+            </div>
+
+            <div class="rounded-lg overflow-hidden shadow hover:shadow-xl transition cursor-pointer">
+                <img src="https://images.pexels.com/photos/3785716/pexels-photo-3785716.jpeg" />
+                <div class="p-5">
+                    <p class="text-purple-600 text-sm mb-2">Lifestyle</p>
+                    <h3 class="text-lg font-semibold">Top modern fashion trends</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ------------------------------------------------------ -->
+    <!-- FOOTER -->
+    <!-- ------------------------------------------------------ -->
+    <footer class="bg-gray-100 mt-10 py-12">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 text-gray-700">
+
+            <div>
+                <h1 class="text-2xl font-bold mb-3">Flone.</h1>
+                <p class="text-sm text-gray-600">© 2025 Flone. All rights reserved.</p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-3">About Us</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>Our Story</li>
+                    <li>Store Location</li>
+                    <li>Support</li>
+                    <li>Orders</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-3">Useful Links</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>Returns</li>
+                    <li>Support Policy</li>
+                    <li>Size Guide</li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-semibold mb-3">Subscribe</h3>
+                <input type="text" placeholder="Enter your email" class="w-full border px-4 py-2 rounded mb-3">
+                <button class="bg-black text-white px-5 py-2 rounded">Subscribe</button>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>

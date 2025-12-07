@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyberpunk Quiz – Enhanced UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: radial-gradient(circle at top, #1a002b, #000);
+        }
+        
+        .glass-card {
+            backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px #00ffff55;
+        }
+        
+        .neon-border {
+            border: 2px solid transparent;
+            background: linear-gradient(#000, #000) padding-box, linear-gradient(135deg, #00ffff, #ff00ff) border-box;
+        }
+        
+        .neon-btn {
+            background: linear-gradient(90deg, #00eaff, #ff00ff);
+            box-shadow: 0 0 15px #ff00ff;
+            transition: .25s;
+        }
+        
+        .neon-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #ff00ff;
+        }
+        
+        .option-btn {
+            transition: 0.25s;
+        }
+        
+        .option-btn:hover {
+            transform: scale(1.02);
+            background: rgba(0, 255, 255, 0.2);
+        }
+        
+        .selected {
+            background: rgba(0, 255, 255, 0.4) !important;
+            border-color: #00ffff !important;
+            box-shadow: 0 0 15px #00ffffaa;
+        }
+        
+        .fade {
+            animation: fadeAnim 0.4s ease-in-out;
+        }
+        
+        @keyframes fadeAnim {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        /* Progress bar animation */
+        
+        .progress {
+            height: 8px;
+            background: #00ffff99;
+            box-shadow: 0 0 10px #00ffff;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="p-4 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-xl p-6 rounded-2xl glass-card neon-border fade">
+
+        <h1 class="text-center text-4xl font-extrabold text-cyan-300 mb-6 drop-shadow-lg">
+            ⚡ Cyberpunk Quiz
+        </h1>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-700/40 rounded-full overflow-hidden mb-6">
+            <div id="progressBar" class="progress w-0"></div>
+        </div>
+
+        <!-- Question Box -->
+        <div id="questionBox" class="text-2xl text-white mb-4 font-semibold text-center"></div>
+
+        <!-- Options -->
+        <div id="options" class="space-y-4"></div>
+
+        <!-- Buttons -->
+        <div class="flex justify-between mt-8">
+            <button id="nextBtn" class="neon-btn w-1/2 py-3 rounded-lg font-bold text-white mr-2 hidden">Next ➜</button>
+
+            <button id="submitBtn" class="neon-btn w-1/2 py-3 rounded-lg font-bold text-white hidden">Submit Quiz</button>
+        </div>
+
+        <!-- Score Box -->
+        <div id="scoreBox" class="hidden mt-6 text-center fade">
+            <h2 class="text-3xl text-green-400 font-extrabold mb-2 drop-shadow-lg">🎉 Your Score</h2>
+            <p id="scoreText" class="text-xl text-white mb-5"></p>
+
+            <button onclick="restartQuiz()" class="neon-btn w-full py-3 rounded-lg font-bold text-white">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [{
+            question: "What does HTML stand for?",
+            options: ["Hyper Text Markup Language", "High Transfer Markup Level", "Hyperlink Marking Language", "Home Tool Markup Language"],
+            answer: 0
+        }, {
+            question: "Which CSS property controls text size?",
+            options: ["font-size", "text-style", "font-weight", "text-size"],
+            answer: 0
+        }, {
+            question: "JavaScript is ___?",
+            options: ["A programming language", "Database", "Markup language", "Operating system"],
+            answer: 0
+        }, {
+            question: "Which HTML tag displays an image?",
+            options: ["<img>", "<image>", "<pic>", "<src>"],
+            answer: 0
+        }, {
+            question: "CSS stands for?",
+            options: ["Creative Style System", "Computer Style Sheet", "Cascading Style Sheets", "Color Style Set"],
+            answer: 2
+        }, {
+            question: "Which defines a function in JavaScript?",
+            options: ["function myFunc()", "def myFunc()", "func myFunc()", "method myFunc()"],
+            answer: 0
+        }, {
+            question: "What does DOM stand for?",
+            options: ["Document Object Model", "Data Object Map", "Digital Object Mode", "Document Order Method"],
+            answer: 0
+        }, {
+            question: "Which array method adds at the end?",
+            options: ["push()", "pop()", "shift()", "insert()"],
+            answer: 0
+        }];
+
+        let index = 0,
+            score = 0,
+            selected = null;
+
+        const questionBox = document.getElementById("questionBox");
+        const optionsBox = document.getElementById("options");
+        const nextBtn = document.getElementById("nextBtn");
+        const submitBtn = document.getElementById("submitBtn");
+        const progressBar = document.getElementById("progressBar");
+
+        function loadQuestion() {
+            selected = null;
+            let q = quizData[index];
+
+            questionBox.textContent = q.question;
+            optionsBox.innerHTML = "";
+
+            q.options.forEach((opt, i) => {
+                optionsBox.innerHTML += `
+                    <button onclick="choose(${i})"
+                        class="option-btn w-full p-3 rounded-lg border border-cyan-300 text-white bg-black/40">
+                        ${opt}
+                    </button>`;
+            });
+
+            nextBtn.classList.toggle("hidden", index >= quizData.length - 1);
+            submitBtn.classList.toggle("hidden", index < quizData.length - 1);
+
+            progressBar.style.width = ((index) / (quizData.length)) * 100 + "%";
+        }
+
+        function choose(i) {
+            selected = i;
+            document.querySelectorAll(".option-btn").forEach((btn, index) => {
+                btn.classList.toggle("selected", index === i);
+            });
+        }
+
+        nextBtn.addEventListener("click", () => {
+            if (selected === null) return alert("Please select an answer!");
+            if (selected === quizData[index].answer) score++;
+            index++;
+            loadQuestion();
+        });
+
+        submitBtn.addEventListener("click", () => {
+            if (selected === quizData[index].answer) score++;
+            showScore();
+        });
+
+        function showScore() {
+            progressBar.style.width = "100%";
+
+            document.getElementById("scoreText").textContent =
+                `You scored ${score} / ${quizData.length}`;
+
+            document.getElementById("scoreBox").classList.remove("hidden");
+            questionBox.classList.add("hidden");
+            optionsBox.classList.add("hidden");
+            nextBtn.classList.add("hidden");
+            submitBtn.classList.add("hidden");
+        }
+
+        function restartQuiz() {
+            index = 0;
+            score = 0;
+
+            document.getElementById("scoreBox").classList.add("hidden");
+            questionBox.classList.remove("hidden");
+            optionsBox.classList.remove("hidden");
+
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+
+</html>

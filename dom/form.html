@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Form Validation</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4faff;
+            padding: 20px;
+        }
+        
+        form {
+            width: 300px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+        
+        .error {
+            color: red;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #005fcc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Form Validation using DOM</h2>
+
+    <form id="myForm">
+        <label>Name:</label>
+        <input type="text" id="name">
+        <p class="error" id="nameError"></p>
+
+        <label>Email:</label>
+        <input type="text" id="email">
+        <p class="error" id="emailError"></p>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Stop form submit
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+
+            let nameError = document.getElementById("nameError");
+            let emailError = document.getElementById("emailError");
+
+            let isValid = true;
+
+            // Clear old errors
+            nameError.textContent = "";
+            emailError.textContent = "";
+
+            // Name validation
+            if (name === "") {
+                nameError.textContent = "Name is required";
+                isValid = false;
+            }
+
+            // Email validation (regex)
+            let emailPattern = /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (email === "") {
+                emailError.textContent = "Email is required";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                emailError.textContent = "Enter a valid email address";
+                isValid = false;
+            }
+
+            // Final submit
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
